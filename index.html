@@ -16,14 +16,40 @@
 </head>
 
 <body class="m-3 container flex">
-    <h1 style="font-family: 'Monoton', cursive;" class="futbolandiaTitle">FÚTBOLANDIA</h1>
-    <button type="button" class="btn btn-success col-3 align-items-end" id="show-table-button">PREMIER LEAGUE TABLE</button>
-    <!-- <div class="font-bold"  id="table-el"></div> -->
+    <header>
+        <h1 style="font-family: 'Monoton', cursive;" class="futbolandiaTitle">FÚTBOLANDIA</h1>
+
+        <div class="dropdown">
+            <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                LEAGUE
+            </button>
+            <ul class="dropdown-menu">
+                <li><a id="show-table-button" class="dropdown-item" href="#">PREMIER LEAGUE</a></li>
+                <li><a class="dropdown-item" href="#">LA LIGA</a></li>
+                <li><a class="dropdown-item" href="#">SERIE A</a></li>
+                <li><a class="dropdown-item" href="#">BUNDESLIGA</a></li>
+
+            </ul>
+        </div>
+
+
+        <select class="btn btn-success dropdown-toggle" aria-label="Default select example">
+            <option selected>LEAGUE</option>
+            <option value="1"><a id="show-table-button" class="dropdown-item" href="#">PREMIER LEAGUE</a></option>
+            <option value="2">LA LIGA</option>
+            <option value="3">SERIE A</option>
+            <option value="4">BUNDESLIGA</option>
+        </select>
+
+    </header>
+    <!-- <button type="button" class="btn btn-success col-3 align-items-end" id="show-table-button">PREMIER LEAGUE TABLE</button> -->
+
     <table class="table table-striped col-3">
         <thead>
             <th></th>
             <th></th>
-            <th>TEAM</th>
+            <th>CLUB</th>
             <th>PLAYED</th>
             <th>+/-</th>
             <th>POINTS</th>
