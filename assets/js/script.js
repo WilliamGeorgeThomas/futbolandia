@@ -56,9 +56,8 @@ function getLeagueData() {
 function showLeagueTable() {
   tableHeader.classList.remove("d-none");
   tableEl.innerHTML = "";
+  logoDiv.innerHTML = "";
   let leagueChoice = document.getElementById("league-button");
-  // console.log(leagueChoice.options[selectedIndex.value]);
-  // console.log(leagueChoice.value);
   let requestUrl = `https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=${getLeagueID(leagueChoice.value)}`;
   console.log(requestUrl);
 
@@ -67,7 +66,8 @@ function showLeagueTable() {
     .then((data) => {
       console.log(data);
 
-      // let leagueLogo = `<img src="https://media.api-sports.io/football/leagues/${leagueID.premierLeague}.png">`;
+      let leagueLogo = `<img src="https://media.api-sports.io/football/leagues/${getLeagueID(leagueChoice.value)}.png">`;
+      logoDiv.innerHTML += leagueLogo;
 
       let standings = data.response[0].league.standings[0];
 
@@ -107,23 +107,22 @@ function showFixtures() {
 
 function showTopScorers() {
   //display table of top scorers for selected league
-    let leagueChoice = document.getElementById("league-button");
-    let topScorerUrl = `https://api-football-v1.p.rapidapi.com/v3/players/topscorers?league=39&season=2022`;
+  let leagueChoice = document.getElementById("league-button");
+  let topScorerUrl = `https://api-football-v1.p.rapidapi.com/v3/players/topscorers?league=39&season=2022`;
 
+  fetch(scorerUrl, options)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
 
-    fetch(scorerUrl, options)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
+      let topScorers = data.response[0].league.standings[0];
 
-        let topScorers = data.response[0].league.standings[0];
-
-        standings.forEach((standing) => {
-          console.log(standing);
-          tableEl.innerHTML += ``;
-        });
-      })
-      .catch((err) => console.error(err));
+      standings.forEach((standing) => {
+        console.log(standing);
+        tableEl.innerHTML += ``;
+      });
+    })
+    .catch((err) => console.error(err));
 }
 
 //function calls
