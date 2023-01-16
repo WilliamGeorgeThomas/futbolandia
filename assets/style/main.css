@@ -6,8 +6,12 @@
     height: 1.5rem;
     width: 1.5rem;
 }
+.leagueLogo{
+    height: 6rem;
+    width: 6rem;
+}
 
-/* .league-button{
+.league-button{
     height: 1.5rem;
     width: 1.5rem;
-} */
+}
