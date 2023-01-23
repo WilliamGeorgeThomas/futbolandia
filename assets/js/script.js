@@ -121,6 +121,8 @@ function showFixtures() {
       let fixtures = data.response;
       console.log(fixtures);
 
+      //TODO: HIDE API KEY
+
       fixtures.forEach((fixture) => {
         let fixtureDate = fixture.fixture.timestamp;
         let now = dayjs().unix();
