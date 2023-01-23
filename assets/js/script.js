@@ -7,6 +7,8 @@ let leagueTableHeader = document.querySelector("#league-table-header");
 let leagueTableDiv = document.querySelector("#league-table-div");
 let scorerHeader = document.querySelector("#scorer-header");
 let scorersDiv = document.querySelector("#scorers-div");
+let fixturesHeader = document.querySelector("#fixtures-header");
+let fixturesDiv = document.querySelector("#fixtures-div");
 let radioDiv = document.querySelector("#radio-div");
 let radioTable = document.querySelector("#radio-table");
 let radioFixtures = document.querySelector("#radio-fixtures");
@@ -19,11 +21,7 @@ let leagueID = {
   ligue1: 61,
 };
 
-const dayjs = require("dayjs");
-console.log(dayjs().format());
-
 // let golDif = document.querySelector("#gol-dif");
-
 
 const options = {
   method: "GET",
@@ -54,13 +52,16 @@ function getLeagueData() {
   radioScorers.checked = false;
   logoDiv.innerHTML = "";
   leagueTableDiv.innerHTML = "";
+  fixturesDiv.innerHTML = "";
   scorersDiv.innerHTML = "";
 
   //clears headers when switching to a different league
   if (!leagueTableHeader.classList.contains("d-none")) {
     leagueTableHeader.classList.add("d-none");
   }
-
+  if (!fixturesHeader.classList.contains("d-none")) {
+    fixturesHeader.classList.add("d-none");
+  }
   if (!scorerHeader.classList.contains("d-none")) {
     scorerHeader.classList.add("d-none");
   }
@@ -74,6 +75,8 @@ function getLeagueData() {
 function showLeagueTable() {
   leagueTableHeader.classList.remove("d-none");
   scorerHeader.classList.add("d-none");
+  fixturesHeader.classList.add("d-none");
+  fixturesDiv.innerHTML = "";
   scorersDiv.innerHTML = "";
   let leagueChoice = document.getElementById("league-button");
   let requestUrl = `https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=${getLeagueID(leagueChoice.value)}`;
@@ -100,22 +103,30 @@ function showLeagueTable() {
     .catch((err) => console.error(err));
 }
 
+let date = dayjs().format("DD/MM/YYYY");
+
 function showFixtures() {
   //display table of fixtures for selected league
+  leagueTableDiv.innerHTML = "";
+  fixturesDiv.innerHTML = "";
+  leagueTableHeader.classList.add("d-none");
+  scorerHeader.classList.add("d-none");
+  fixturesHeader.classList.remove("d-none");
   let leagueChoice = document.getElementById("league-button");
-  let fixtureUrl = `https://api-football-v1.p.rapidapi.com/v3/fixtures?league=39&season=2022`;
- 
+  let fixtureUrl = `https://api-football-v1.p.rapidapi.com/v3/fixtures?league=${getLeagueID(leagueChoice.value)}&season=2022`;
 
   fetch(fixtureUrl, options)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-
       let fixtures = data.response;
+      console.log(fixtures);
 
-      standings.forEach((fixture) => {
-        console.log(fixture);
-        leagueTableDiv.innerHTML += ``;
+      fixtures.forEach((fixture) => {
+        let fixtureDate = fixture.fixture.timestamp;
+        let now = dayjs().unix();
+        if (fixtureDate > now) {
+          fixturesDiv.innerHTML += `<tr><td>${fixture.fixture.date}</td><td>${dayjs(fixture.fixture.date).format("MMMM DD, YYYY")}</td><td>${fixture.teams.home.name}</td><td>${fixture.teams.away.name}</td></tr>`;
+        }
       });
     })
     .catch((err) => console.error(err));
@@ -124,7 +135,9 @@ function showFixtures() {
 function showTopScorers() {
   //display table of top scorers for selected league
   leagueTableDiv.innerHTML = "";
+  fixturesDiv.innerHTML = "";
   leagueTableHeader.classList.add("d-none");
+  fixturesHeader.classList.add("d-none");
   scorerHeader.classList.remove("d-none");
   let leagueChoice = document.getElementById("league-button");
   let topScorerUrl = `https://api-football-v1.p.rapidapi.com/v3/players/topscorers?league=${getLeagueID(leagueChoice.value)}&season=2022`;
