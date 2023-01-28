@@ -127,7 +127,7 @@ function showFixtures() {
         let fixtureDate = fixture.fixture.timestamp;
         let now = dayjs().unix();
         if (fixtureDate > now) {
-          fixturesDiv.innerHTML += `<tr><td>${fixture.fixture.date}</td><td>${dayjs(fixture.fixture.date).format("MMMM DD, YYYY")}</td><td>${fixture.teams.home.name}</td><td>${fixture.teams.away.name}</td></tr>`;
+          fixturesDiv.innerHTML += `<tr><td>${fixture.fixture.date}</td><td>${dayjs(fixture.fixture.date).format("MMMM DD, YYYY")}</td><td><img class="teamLogo" src="${fixture.teams.home.logo}"></td><td>${fixture.teams.home.name}</td><td>vs</td><td><img class="teamLogo" src="${fixture.teams.away.logo}"></td><td>${fixture.teams.away.name}</td><td>${fixture.fixture.venue.name}</td></tr>`;
         }
       });
     })
