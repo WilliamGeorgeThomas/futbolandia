@@ -91,7 +91,11 @@ function showLeagueTable() {
 
       standings.forEach((standing) => {
         console.log(standing);
-        leagueTableDiv.innerHTML += `<tr><td>${standing.rank}</td><td><img class="teamLogo" src="${standing.team.logo}"></td><td>${standing.team.name}</td><td>${standing.all.played}</td><td id="golDif">${standing.goalsDiff}</td><td>${standing.points}</td><td>${standing.form}</td></tr>`;
+        leagueTableDiv.innerHTML += `<tr id="tableLine"><td>${standing.rank}</td><td><img class="teamLogo" src="${standing.team.logo}"></td><td>${standing.team.name}</td><td>${standing.all.played}</td><td id="golDif">${standing.goalsDiff}</td><td class="fw-bold">${standing.points}</td><td>${standing.form}</td></tr>`;
+
+        // if (standing.rank <= 4) {
+        //   tableLine.classList.add("table-success");
+        // }
 
         // if (standing.goalsDiff >= 0) {
         //   golDif.classList.add("text-success");
@@ -155,7 +159,7 @@ function showTopScorers() {
 
       topScorers.forEach((scorer) => {
         console.log(scorer);
-        scorersDiv.innerHTML += `<tr><td>${scorer.player.name} (${scorer.player.nationality})</td><td><img class="teamLogo" src="${scorer.statistics[0].team.logo}"></td><td>${scorer.statistics[0].team.name}</td><td>${scorer.statistics[0].goals.total}</td></tr>`;
+        scorersDiv.innerHTML += `<tr><td>${scorer.player.name} (${scorer.player.nationality})</td><td><img class="teamLogo" src="${scorer.statistics[0].team.logo}"></td><td>${scorer.statistics[0].team.name}</td><td class="fw-bold">${scorer.statistics[0].goals.total}</td></tr>`;
       });
     })
     .catch((err) => console.error(err));

@@ -15,90 +15,102 @@
     <title>FÚTBOLANDIA</title>
 </head>
 
-<body class="d-flex flex-column m-3 min-height-100vh min-width-100vh">
-    <header class="d-flex justify-content-between container-fluid my-auto">
-        <h1 style="font-family: 'Monoton', cursive;" class="futbolandiaTitle">FÚTBOLANDIA</h1>
+<body class="d-flex flex-column min-height-100vh min-width-100vh">
+    <nav class="navbar bg-success py-4">
+        <div class="container">
+            <a href="#" class="navbar-brand">
+                <h1 style="font-family: 'Monoton', cursive;" class="futbolandiaTitle">FÚTBOLANDIA</h1>
+            </a>
 
 
-        <div id="logo-div"></div>
-
-        <select class="btn btn-success btn-sm dropdown-toggle" aria-label="league" id="league-button">
-            <option disabled selected>LEAGUE</option>
-            <option id="league-option" value="premierLeague">PREMIER LEAGUE</option>
-            <option value="laLiga">LA LIGA</option>
-            <option value="serieA">SERIE A</option>
-            <option value="bundesliga">BUNDESLIGA</option>
-        </select>
-
-    </header>
-
-
-    <div id="radio-div" class="d-flex flex row justify-content-center d-none">
-        <div class="form-check col-3">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio-table"
-                onclick="showLeagueTable()">
-            <label class="form-check-label" for="radio-table">
-                TABLE
-            </label>
+            <select class="btn btn-light btn-sm dropdown-toggle ms-auto" aria-label="league" id="league-button">
+                <option disabled selected>LEAGUE</option>
+                <option id="league-option" value="premierLeague">PREMIER LEAGUE</option>
+                <option value="laLiga">LA LIGA</option>
+                <option value="serieA">SERIE A</option>
+                <option value="bundesliga">BUNDESLIGA</option>
+            </select>
         </div>
-        <div class="form-check col-3">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio-fixtures"
-                onclick="showFixtures()">
-            <label class="form-check-label" for="radio-fixtures">
-                FIXTURES
-            </label>
+
+    </nav>
+
+    <section>
+        <div class="container">
+
+            <div id="radio-div" class="d-flex flex-column flex-md-row justify-content-between align-items-center d-none">
+
+                <div class="img-fluid" id="logo-div"></div>
+
+                <div class="form-check col-3">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio-table"
+                        onclick="showLeagueTable()">
+                    <label class="form-check-label" for="radio-table">
+                        TABLE
+                    </label>
+                </div>
+                <div class="form-check col-3">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio-fixtures"
+                        onclick="showFixtures()">
+                    <label class="form-check-label" for="radio-fixtures">
+                        FIXTURES
+                    </label>
+                </div>
+                <div class="form-check col-3">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio-scorers"
+                        onclick="showTopScorers()">
+                    <label class="form-check-label" for="radio-scorers">
+                        TOP SCORERS
+                    </label>
+                </div>
+            </div>
         </div>
-        <div class="form-check col-3">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio-scorers"
-                onclick="showTopScorers()">
-            <label class="form-check-label" for="radio-scorers">
-                TOP SCORERS
-            </label>
-        </div>
+    </section>
+
+    <div class="container">
+
+        <main class="d-flex-lg container-fluid my-auto px-6">
+
+            <table id="league-table-header" class="table table-striped d-none col-12 col-md 6 justify-content-center">
+                <thead>
+                    <th></th>
+                    <th></th>
+                    <th>CLUB</th>
+                    <th>PLAYED</th>
+                    <th>+/-</th>
+                    <th>POINTS</th>
+                    <th>FORM</th>
+                </thead>
+                <tbody id="league-table-div" class="table-group-divider">
+                </tbody>
+            </table>
+
+            <table id="scorer-header" class="table table-striped d-none col-12 col-md 6 justify-content-center">
+                <thead>
+                    <th>PLAYER</th>
+                    <th></th>
+                    <th>CLUB</th>
+                    <th>GOALS</th>
+                </thead>
+                <tbody id="scorers-div" class="table-group-divider">
+                </tbody>
+            </table>
+
+            <table id="fixtures-header" class="table table-striped d-none col-12 col-md 6 justify-content-center">
+                <thead>
+                    <th>DATE</th>
+                    <th></th>
+                    <th></th>
+                    <th>HOME</th>
+                    <th></th>
+                    <th></th>
+                    <th>AWAY</th>
+                    <th>STADIUM</th>
+                </thead>
+                <tbody id="fixtures-div" class="table-group-divider">
+                </tbody>
+            </table>
+        </main>
     </div>
-
-    <main class="d-flex container-fluid my-auto p-4">
-
-        <table id="league-table-header" class="table table-striped d-none col-12 col-md 6 justify-content-center">
-            <thead>
-                <th></th>
-                <th></th>
-                <th>CLUB</th>
-                <th>PLAYED</th>
-                <th>+/-</th>
-                <th>POINTS</th>
-                <th>FORM</th>
-            </thead>
-            <tbody id="league-table-div" class="table-group-divider">
-            </tbody>
-        </table>
-
-        <table id="scorer-header" class="table table-striped d-none col-12 col-md 6 justify-content-center">
-            <thead>
-                <th>PLAYER</th>
-                <th></th>
-                <th>CLUB</th>
-                <th>GOALS</th>
-            </thead>
-            <tbody id="scorers-div" class="table-group-divider">
-            </tbody>
-        </table>
-
-        <table id="fixtures-header" class="table table-striped d-none col-12 col-md 6 justify-content-center">
-            <thead>
-                <th>DATE</th>
-                <th></th>
-                <th></th>
-                <th>HOME</th>
-                <th></th>
-                <th></th>
-                <th>AWAY</th>
-                <th>STADIUM</th>
-            </thead>
-            <tbody id="fixtures-div" class="table-group-divider">
-            </tbody>
-        </table>
-    </main>
 
 </body>
 
