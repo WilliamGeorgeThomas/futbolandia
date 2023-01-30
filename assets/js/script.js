@@ -16,7 +16,7 @@ let radioScorers = document.querySelector("#radio-scorers");
 let leagueID = {
   premierLeague: 39,
   laLiga: 140,
-  serieA: 71,
+  serieA: 135,
   bundesliga: 78,
   ligue1: 61,
 };
@@ -135,7 +135,7 @@ function showFixtures() {
         //sort through array by unix timestamp?
 
         if (fixtureDate > now) {
-          fixturesDiv.innerHTML += `<tr><td>${fixture.fixture.id},  ${fixture.fixture.timestamp}</td><td>${dayjs(fixture.fixture.date).format("MMMM DD, YYYY")}</td><td><img class="teamLogo" src="${fixture.teams.home.logo}"></td><td>${fixture.teams.home.name}</td><td>vs</td><td><img class="teamLogo" src="${fixture.teams.away.logo}"></td><td>${fixture.teams.away.name}</td><td>${fixture.fixture.venue.name}, ${fixture.fixture.venue.city}</td></tr>`;
+          fixturesDiv.innerHTML += `<tr><td>${dayjs(fixture.fixture.date).format("MMMM DD, YYYY")}</td><td><img class="teamLogo" src="${fixture.teams.home.logo}"></td><td>${fixture.teams.home.name}</td><td>vs</td><td><img class="teamLogo" src="${fixture.teams.away.logo}"></td><td>${fixture.teams.away.name}</td><td>${fixture.fixture.venue.name}, ${fixture.fixture.venue.city}</td></tr>`;
         }
       });
     })
