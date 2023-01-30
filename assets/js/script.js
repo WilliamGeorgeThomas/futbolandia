@@ -23,6 +23,7 @@ let leagueID = {
 
 // let golDif = document.querySelector("#gol-dif");
 
+//TODO: HIDE API KEY
 const options = {
   method: "GET",
   headers: {
@@ -123,15 +124,18 @@ function showFixtures() {
     .then((response) => response.json())
     .then((data) => {
       let fixtures = data.response;
-      console.log(fixtures);
 
-      //TODO: HIDE API KEY
+      fixtures.sort((a, b) => a.fixture.timestamp - b.fixture.timestamp);
+
+      console.log(fixtures);
 
       fixtures.forEach((fixture) => {
         let fixtureDate = fixture.fixture.timestamp;
         let now = dayjs().unix();
+        //sort through array by unix timestamp?
+
         if (fixtureDate > now) {
-          fixturesDiv.innerHTML += `<tr><td>${fixture.fixture.date}</td><td>${dayjs(fixture.fixture.date).format("MMMM DD, YYYY")}</td><td><img class="teamLogo" src="${fixture.teams.home.logo}"></td><td>${fixture.teams.home.name}</td><td>vs</td><td><img class="teamLogo" src="${fixture.teams.away.logo}"></td><td>${fixture.teams.away.name}</td><td>${fixture.fixture.venue.name}</td></tr>`;
+          fixturesDiv.innerHTML += `<tr><td>${fixture.fixture.id},  ${fixture.fixture.timestamp}</td><td>${dayjs(fixture.fixture.date).format("MMMM DD, YYYY")}</td><td><img class="teamLogo" src="${fixture.teams.home.logo}"></td><td>${fixture.teams.home.name}</td><td>vs</td><td><img class="teamLogo" src="${fixture.teams.away.logo}"></td><td>${fixture.teams.away.name}</td><td>${fixture.fixture.venue.name}, ${fixture.fixture.venue.city}</td></tr>`;
         }
       });
     })
