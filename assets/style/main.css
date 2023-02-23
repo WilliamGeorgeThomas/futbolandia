@@ -16,6 +16,13 @@
     width: 1.5rem;
 }
 
+/* @media (min-width: 576px) {
+    
+    .futbolandiaTitle {
+        font-size: 3rem;
+    }
+} */
+
 /* section {
     background-image: url("../images/timothy-tan-PAe2UhGo-S4-unsplash.jpg");
     background-color: #cccccc;

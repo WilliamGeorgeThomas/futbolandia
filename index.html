@@ -15,9 +15,9 @@
     <title>FÚTBOLANDIA</title>
 </head>
 
-<body class="d-flex flex-column min-height-100vh min-width-100vh">
+<body class="d-flex flex-column min-vw-100 min-vh-100">
     <nav class="navbar bg-success py-4">
-        <div class="container">
+        <div class="container flex-column-md">
             <a href="#" class="navbar-brand">
                 <h1 style="font-family: 'Monoton', cursive;" class="futbolandiaTitle">FÚTBOLANDIA</h1>
             </a>
@@ -29,6 +29,7 @@
                 <option value="laLiga">LA LIGA</option>
                 <option value="serieA">SERIE A</option>
                 <option value="bundesliga">BUNDESLIGA</option>
+                <option value="ligue1">LIGUE 1</option>
             </select>
         </div>
 
@@ -67,12 +68,11 @@
         </div>
     </section>
 
-    <div class="container">
+    <main class="d-flex-lg container-fluid m-4">
 
-        <main class="d-flex-lg container-fluid my-auto px-6">
+        <div class="d-flex container-fluid justify-content-center">
 
-            <table id="league-table-header"
-                class="table table-striped d-none col-12 col-md 6 justify-content-center w-auto">
+            <table id="league-table-header" class="table table-striped table-responsive d-none col-12 col-md 6 justify-content-center">
                 <thead>
                     <th></th>
                     <th></th>
@@ -86,7 +86,7 @@
                 </tbody>
             </table>
 
-            <table id="scorer-header" class="table table-striped d-none col-12 col-md 6 justify-content-center w-auto">
+            <table id="scorer-header" class="table table-striped table-responsive d-none col-12 col-md 6 justify-content-center">
                 <thead>
                     <th>PLAYER</th>
                     <th></th>
@@ -98,7 +98,7 @@
             </table>
 
             <table id="fixtures-header"
-                class="table table-striped d-none col-12 col-md 6 justify-content-center w-auto">
+                class="table table-striped table-responsive d-none col-12 col-md 6">
                 <thead>
                     <th>DATE</th>
                     <th></th>
@@ -111,8 +111,8 @@
                 <tbody id="fixtures-div" class="table-group-divider">
                 </tbody>
             </table>
-        </main>
-    </div>
+        </div>
+    </main>
 
 </body>
 
